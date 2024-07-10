@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion">
+  <meta property="og:title" content="ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion">
+  <meta property="og:description" content="ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion">
+  <meta property="og:image" content="https://ProDepth.github.io/static/images/teaser.png">
+  <meta property="twitter:title" content="ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion">
+  <meta property="twitter:description" content="ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion">
+  <meta property="twitter:image" content="https://ProDepth.github.io/static/images/teaser.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="monocular, depth estimation, dynamical scenes, motion segmentation, self-supervised">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G62L2JMGEW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    
+    function gtag(){
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-G62L2JMGEW');
+  </script>
+  <!-- Google tag (gtag.js) -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- Title/Authors/Institutions/Links -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- Title -->
+          <h1 class="title is-1 publication-title">ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion</h1>
+          <h2 class="title is-size-3">NeurIPS 2023</h2>
+          <!-- Title -->
+          
+          <!-- Authors -->
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://yihongsun.github.io">Yihong Sun</a>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.cornell.edu/~bharathh/">Bharath Hariharan</a></span>
+          </div>
+          <!-- Authors -->
+          
+          <!-- Institutions -->
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Cornell University</span>
+          </div>
+          <!-- Institutions -->
+
+          <!-- PDF Links -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2310.18887.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2310.18887"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/zTmUaudo_5Q"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/YihongSun/ProDepth"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+          <!-- PDF Links -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Title/Authors/Institutions/Links -->
+
+
+<!-- Teaser Videos -->
+<section class="hero teaser">
+  <div class="container"> 
+    <div class="hero-body">
+      <video id="teaser1" autoplay muted loop playsinline width="100%" poster="static/images/teaser1.png" preload="auto">
+        <source src="./static/videos/waymo/segment-12496433400137459534_120_000_140_000.mp4" type="video/mp4">
+      </video>
+      <video id="teaser2" autoplay muted loop playsinline width="100%" poster="static/images/teaser2.png" preload="auto">
+        <source src="./static/videos/waymo/segment-11450298750351730790_1431_750_1451_750.mp4" type="video/mp4">
+      </video>
+      <video id="teaser3" autoplay muted loop playsinline width="100%" poster="static/images/teaser3.png" preload="auto">
+        <source src="./static/videos/waymo/segment-7932945205197754811_780_000_800_000.mp4" type="video/mp4">
+      </video>
+      <img class="labels" src="./static/images/labels.png">
+      <h2 class="subtitle has-text-centered">ProDepth learns from unlabeled video sequences and predicts monocular depth, rigid flow, independent flow, and motion segmentation.</h2>
+    </div>
+  </div>
+</section>
+<!-- Teaser Videos -->
+
+
+<!-- Main Body -->
+<section class="section">
+  <div class="container">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Unsupervised monocular depth estimation techniques have demonstrated encouraging results but typically assume that the scene is static. 
+            These techniques suffer when trained on dynamical scenes, where apparent object motion can equally be explained by hypothesizing the object's independent motion, or by altering its depth. 
+            This ambiguity causes depth estimators to predict erroneous depth for moving objects.
+          </p>
+          <p>
+            To resolve this issue, we introduce ProDepth, an unifying approach that disambiguates dynamical motion by jointly learning monocular depth, 3D independent flow field, and motion segmentation from unlabeled monocular videos. 
+            Specifically, we offer our key insight that a good initial estimation of motion segmentation is sufficient for jointly learning depth and independent motion despite the fundamental underlying ambiguity. 
+            Our proposed method achieves state-of-the-art performance on monocular depth estimation on Waymo Open and nuScenes Dataset with significant improvement in the depth of moving objects.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract -->
+
+    &nbsp;
+
+    <!-- Methodology -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <img class="architecture" src="./static/images/arch.png" alt="">
+        <h2 class="subtitle has-text-centered">
+          An overview of the proposed ProDepth.
+        </h2>
+      </div>
+    </div>
+    <!--/ Methodology -->
+
+    &nbsp;
+
+    <!-- Paper video -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/zTmUaudo_5Q?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video -->
+  </div>
+</section>
+<!-- Main Body -->
+
+
+<!-- Results -->
+<section class="section">
+  <div class="container"> 
+    <div class="hero-body">
+      <div class="column is-centered has-text-centered">
+        <h2 class="title is-3">Qualitative Results </h2>
+      </div>
+    </div>
+
+    <video id="waymo1" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-4575389405178805994_4900_000_4920_000.mp4" type="video/mp4">
+    </video>
+    <video id="waymo2" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-8506432817378693815_4860_000_4880_000.mp4" type="video/mp4">
+    </video>
+    <video id="waymo3" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-1943605865180232897_680_000_700_000.mp4" type="video/mp4">
+    </video>
+    <video id="waymo4" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-8137195482049459160_3100_000_3120_000.mp4" type="video/mp4">
+    </video>
+    <video id="waymo5" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-30779396576054160_1880_000_1900_000.mp4" type="video/mp4">
+    </video>
+    <video id="waymo6" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-16751706457322889693_4475_240_4495_240.mp4" type="video/mp4">
+    </video>
+    <img class="labels" src="./static/images/labels.png">
+    <h2 class="subtitle has-text-centered">Additional results on Waymo Open Dataset.</h2>
+
+    <div style="margin-bottom: 70px;"></div>
+
+    <video id="nuscenes1" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0099.mp4" type="video/mp4">
+    </video>
+    <video id="nuscenes2" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0104.mp4" type="video/mp4">
+    </video>
+    <video id="nuscenes3" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0556.mp4" type="video/mp4">
+    </video>
+    <video id="nuscenes4" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0521.mp4" type="video/mp4">
+    </video>
+    <video id="nuscenes5" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0794.mp4" type="video/mp4">
+    </video>
+    <video id="nuscenes6" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/nuscenes/scene-0553.mp4" type="video/mp4">
+    </video>
+    <img class="labels" src="./static/images/labels.png">
+    <h2 class="subtitle has-text-centered">Additional results on nuScenes Dataset.</h2>
+
+  </div>
+</section>
+<!-- Results -->
+
+
+<!-- Limitations -->
+<section class="section">
+  <div class="container"> 
+    <div class="hero-body">
+      <div class="column is-centered has-text-centered">
+        <h2 class="title is-3">Limitations </h2>
+      </div>
+    </div>
+
+    <video id="waymo3" controls autoplay muted loop playsinline width="100%">
+      <source src="./static/videos/waymo/segment-1457696187335927618_595_027_615_027.mp4" type="video/mp4">
+    </video>
+    <img class="labels" src="./static/images/labels.png">
+    <h2 class="subtitle has-text-centered"> Object shadows are modeled as independently moving on the ground.</h2>
+
+    <div style="margin-bottom: 70px;"></div>
+
+  </div>
+</section>
+<!-- Limitations -->
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container">
+    <!-- Abstract -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">BibTeX</h2>
+        <pre><code>@inproceedings{sun2023dynamodepth,
+  title={ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion},
+  author={Yihong Sun and Bharath Hariharan},
+  booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+  year={2023}
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- BibTeX -->
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/ProDepth/ProDepth.github.io" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer -->
+
+
+</body>
+</html>
