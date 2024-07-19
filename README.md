@@ -29,7 +29,7 @@ pip install numpy==1.23.4 matplotlib==3.5.3 opencv-python==4.7.0.72 tqdm scikit-
 ```
 We ran out experiments with PyTorch 1.7.1, CUDA 11.0, Pyhton 3.9.13 and Ubuntu 18.04.
 
-## 💾 Data Prepare
+## 💾 Data Preparation
 ### 🔹 KITTI
 
 You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) by running:
@@ -119,13 +119,11 @@ You can download weights for some pretrained models here:
 🔹 KITTI
 | CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
 |-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
-| ResNet 18         | 640 x 192   |      0.091         | [Download 🔗]           |
 | LiteMono          | 640 x 192   |      0.086         | [Download 🔗]           |
 
 🔹 Cityscapes
 | CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
 |-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
-| ResNet 18         | 512 x 192   |      0.099         | [Download 🔗]           |
 | LiteMono          | 512 x 192   |      0.095         | [Download 🔗]           |
 
 
@@ -188,7 +186,7 @@ wget https://storage.googleapis.com/niantic-lon-static/research/manydepth/gt_dep
 unzip gt_depths_cityscapes.zip
 cd ../..
 ```
-To evaluate a model on KITTI, run:
+To evaluate a model on Cityscapes, run:
 ```
 bash ./test_cs_prodepth.sh <model_name>
 ```
