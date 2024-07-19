@@ -14,7 +14,7 @@ Codes will be released soon.
 - [Training](#training)
   - [Single-GPU](#-single-gpu-training)
   - [Multi-GPU](#-multi-gpu-training)
-- [Ground Truth Data Prepare and Evaluation](#evaluation)
+- [Ground Truth Data Preparation and Evaluation](#evaluation)
 - [Citation](#citation)
 
 ## ⚙️ Installation
@@ -91,7 +91,7 @@ python prepare_train_data.py \
     --num_threads 8
 ```
 
-You should be able to obtain following directory structure ./CS_RAW and ./CS as...
+You should be able to obtain following directory structure ./CS_RAW and ./CS as
 ```
 data_dir/CS_RAW/
   |--camera
@@ -127,25 +127,18 @@ You can download weights for some pretrained models here:
 | ProDepth          | 512 x 192   |      0.095         | [Download 🔗]           |
 
 
-<!--
-| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
-|-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
-| ResNet 18         | 640 x 192   |      0.104         | [Download 🔗](https://drive.google.com/file/d/1k3-7nki-v6k111wBZ-7pQNVU8QU7Nemx/view?usp=sharing)           |
--->
-
 ## ⏳ Training
 
 - Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`).
-- By default models and log event files are saved to ./log.
-- If you want to run Prodepth with Lite-Mono backbone, please download the ImageNet-1K pretrained [Lite-Mono](https://surfdrive.surf.nl/files/index.php/s/oil2ME6ymoLGDlL) and place to './pretrained/'.
-- For better training, we recommend to freeze single-frame depth estimation during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI] and [Cityscapes]. Please download the given checkpoints and place to './pretrained/<CS> or <KIITI>/'.
+- By default, models and log event files are saved to ./log.
+- As our model uses the lightweight backbone of "Lite-Mono", please download the ImageNet-1K pretrained [Lite-Mono](https://surfdrive.surf.nl/files/index.php/s/oil2ME6ymoLGDlL) and place to './pretrained/'.
+- To stable the training process of multi-frame depth estimation, we recommend freezing the single-frame depth network during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI] and [Cityscapes]. Please download the given checkpoints and place to './pretrained/<CS> or <KIITI>/'.
   
 ### 🔹 Single GPU Training
 
-For instance, to train w/ 1 GPU on Cityscapes Dataset:
+To train w/ single GPU on Cityscapes Dataset:
 
-Change $GPU_NUM and $BS in train_cs_prodepth.sh to 1 and 24
-Then run,
+Change $GPU_NUM and $BS in train_cs_prodepth.sh to 1 and 24, and run:
 ```
 bash ./train_cs_prodepth.sh <model_name> <port_num>
 ```
@@ -153,23 +146,22 @@ bash ./train_cs_prodepth.sh <model_name> <port_num>
 ### 🔹 Multi-GPU Training
 
 For instance, to train w/ 4 GPUs on Cityscapes Dataset:
-Change $GPU_NUM and $BS in train_cs_prodepth.sh to 4 and 6
-Then run,
+Change $GPU_NUM and $BS in train_cs_prodepth.sh to 4 and 6, and run:
 ```
 CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name> <port_num>
 ```
 Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py] for details).
 
-## 📊 Ground Truth Data Prepare and Evaluation
+## 📊 Ground Truth Data Preparation and Evaluation
 
 🔹 KITTI
-To prepare the ground truth depth maps run:
+To prepare the ground truth depth maps, run:
 ```shell
 python export_gt_depth.py --data_path kitti_data --split eigen
 python export_gt_depth.py --data_path kitti_data --split eigen_benchmark
 ```
 
-...assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
+Assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
 
 To evaluate a model on KITTI, run:
 ```
@@ -178,7 +170,7 @@ bash ./test_kitti_prodepth.sh <model_name>
 
 
 🔹 Cityscapes
-Download cityscapes depth ground truth(provided by manydepth) for evaluation:
+Download cityscapes depth ground truth (provided by manydepth) for evaluation:
 ```bash
 cd ..
 cd splits/cityscapes/
@@ -204,6 +196,6 @@ If you find our work useful or interesting, please cite our paper:
 ```
 
 ## Acknowledgements
-Our work is partially based on these opening source work: [monodepth2](https://github.com/nianticlabs/monodepth2), [ManyDepth](https://github.com/nianticlabs/manydepth), [DynmaicDepth](https://github.com/AutoAILab/DynamicDepth), [DynamoDepth](https://dynamo-depth.github.io/).
+Our work is partially based on these opening source work: [monodepth2](https://github.com/nianticlabs/monodepth2), [ManyDepth](https://github.com/nianticlabs/manydepth), [DynamicDepth](https://github.com/AutoAILab/DynamicDepth), [DynamoDepth](https://dynamo-depth.github.io/), [Lite-Mono](https://github.com/noahzn/Lite-Mono).
 
 We appreciate their contributions to the depth learning community.
