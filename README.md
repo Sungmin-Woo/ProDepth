@@ -202,3 +202,8 @@ If you find our work useful or interesting, please cite our paper:
   year={2024}
 }
 ```
+
+## Acknowledgements
+Our work is partially based on these opening source work: [monodepth2](https://github.com/nianticlabs/monodepth2), [ManyDepth](https://github.com/nianticlabs/manydepth), [DynmaicDepth](https://github.com/AutoAILab/DynamicDepth)). [DynamoDepth](https://dynamo-depth.github.io/).
+
+We appreciate their contributions to the depth learning community.
