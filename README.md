@@ -117,14 +117,14 @@ You can also place the Cityscapes dataset wherever you like and point towards it
 You can download weights for some pretrained models here:
 
 🔹 KITTI
-| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
+| Model      | Input size  | Cityscapes AbsRel | Link                                                               |
 |-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
-| LiteMono          | 640 x 192   |      0.086         | [Download 🔗]           |
+| ProDepth          | 640 x 192   |      0.086         | [Download 🔗]           |
 
 🔹 Cityscapes
-| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
+| Model      | Input size  | Cityscapes AbsRel | Link                                                               |
 |-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
-| LiteMono          | 512 x 192   |      0.095         | [Download 🔗]           |
+| ProDepth          | 512 x 192   |      0.095         | [Download 🔗]           |
 
 
 <!--
