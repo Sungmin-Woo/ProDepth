@@ -10,6 +10,7 @@ Codes will be released soon.
 - [Data Preparation](#data-preparation)
   - [KITTI](#-KITTI)
   - [Cityscapes](#-Cityscapes)
+- [Pretrianed weights](#-pretrained-weights)
 - [Training](#training)
   - [Single-GPU](#-single-gpu-training)
   - [Multi-GPU](#-multi-gpu-training)
@@ -130,11 +131,37 @@ cd ../..
 
 You can also place the Cityscapes dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
 
+## 📦 Pretrained Weights
+
+You can download weights for some pretrained models here:
+
+🔹 KITTI
+| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
+|-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
+| ResNet 18         | 640 x 192   |      0.091         | [Download 🔗]           |
+| LiteMono          | 640 x 192   |      0.086         | [Download 🔗]           |
+
+🔹 Cityscapes
+| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
+|-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
+| ResNet 18         | 512 x 192   |      0.099         | [Download 🔗]           |
+| LiteMono          | 512 x 192   |      0.095         | [Download 🔗]           |
+
+
+<!--
+| CNN Backbone      | Input size  | Cityscapes AbsRel | Link                                                               |
+|-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
+| ResNet 18         | 640 x 192   |      0.104         | [Download 🔗](https://drive.google.com/file/d/1k3-7nki-v6k111wBZ-7pQNVU8QU7Nemx/view?usp=sharing)           |
+-->
 
 ## ⏳ Training
 
-Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`)
+Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`).
+By default models and log event files are saved to ./log.
 
+## Note
+- If you want to run Prodepth with Lite-Mono backbone, please download the ImageNet-1K pretrained [Lite-Mono](https://surfdrive.surf.nl/files/index.php/s/oil2ME6ymoLGDlL) and place to './pretrained/'.
+- For better training, we recommend to freeze single-frame depth estimation during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI] and [Cityscapes]. Please download the given checkpoints and place to './pretrained/<CS> or <KIITI>/'.
 ### 🔹 Single GPU Training
 
 For instance, to train w/ 1 GPU on Cityscapes Dataset:
@@ -153,11 +180,14 @@ Then run,
 ```
 CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name> <port_num>
 ```
-Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py](options.py) for details).
+Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py] for details).
 
-## 💾 Evaluation
+## 📊 Evaluation
 
-
+To evaluate a model on Cityscapes, run:
+```
+bash ./test_cs_prodepth.sh <model_name>
+```
 
 ## ✏️ 📄 Citation
 If you find our work useful or interesting, please cite our paper:
