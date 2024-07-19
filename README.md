@@ -37,6 +37,7 @@ You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/k
 ```shell
 wget -i splits/kitti_archives_to_download.txt -P kitti_data/
 ```
+
 Then unzip with
 ```shell
 cd kitti_data
@@ -44,11 +45,34 @@ unzip "*.zip"
 cd ..
 ```
 
+You should be able to obtain following directory structure.
+```
+data_dir/kitti_data/
+  |-- 2011_09_26
+    |-- calib_cam_to_cam.txt
+    |-- calib_imu_to_velo.txt
+    |-- calib_velo_to_cam.txt
+    |-- 2011_09_26_drive_0001_sync
+      |-- image_00
+      |-- image_01
+      |-- image_02
+      |-- image_03
+      |-- oxts
+      |-- velodyne_points
+    |-- 2011_09_26_drive_0002_sync
+    |-- ...
+  |-- 2011_09_28
+  |-- 2011_09_29
+  |-- 2011_09_30
+  |-- 2011_10_03
+```
+
 To prepare the ground truth depth maps run:
 ```shell
 python export_gt_depth.py --data_path kitti_data --split eigen
 python export_gt_depth.py --data_path kitti_data --split eigen_benchmark
 ```
+
 ...assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
 
 You can also place the KITTI dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
@@ -74,6 +98,26 @@ python prepare_train_data.py \
     --dump_root CS \
     --seq_length 3 \
     --num_threads 8
+```
+
+You should be able to obtain following directory structure ./CS_RAW and ./CS as...
+```
+data_dir/CS_RAW/
+  |--camera
+    |--test
+    |--train
+    |--val
+  |--leftImg8bit_sequence
+    |--test
+    |--train
+    |--val
+  |--license.txt
+  |--ReadMe
+```
+```
+data_dir/CS/
+  |--aachen
+  |--bochum
 ```
 
 Download cityscapes depth ground truth(provided by manydepth) for evaluation:
