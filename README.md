@@ -137,12 +137,11 @@ You can download weights for some pretrained models here:
 
 ## ⏳ Training
 
-Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`).
-By default models and log event files are saved to ./log.
-
-## Note
+- Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`).
+- By default models and log event files are saved to ./log.
 - If you want to run Prodepth with Lite-Mono backbone, please download the ImageNet-1K pretrained [Lite-Mono](https://surfdrive.surf.nl/files/index.php/s/oil2ME6ymoLGDlL) and place to './pretrained/'.
 - For better training, we recommend to freeze single-frame depth estimation during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI] and [Cityscapes]. Please download the given checkpoints and place to './pretrained/<CS> or <KIITI>/'.
+  
 ### 🔹 Single GPU Training
 
 For instance, to train w/ 1 GPU on Cityscapes Dataset:
