@@ -43,11 +43,53 @@ cd kitti_data
 unzip "*.zip"
 cd ..
 ```
+
+To prepare the ground truth depth maps run:
+```shell
+python export_gt_depth.py --data_path kitti_data --split eigen
+python export_gt_depth.py --data_path kitti_data --split eigen_benchmark
+```
+...assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
+
 You can also place the KITTI dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
 
 Please refer to [Monodepth2](https://github.com/nianticlabs/monodepth2) for detail instructions.
 
 🔹 Cityscapes
+
+From [Cityscapes official website](https://www.cityscapes-dataset.com/) download the following packages: 1) `leftImg8bit_sequence_trainvaltest.zip`, 2) `camera_trainvaltest.zip` into the `CS_RAW` folder.
+
+Preprocess the Cityscapes dataset using the `prepare_train_data.py`(from SfMLearner) script with following command:
+```bash
+cd CS_RAW
+unzip leftImg8bit_sequence_trainvaltest.zip
+unzip camera_trainvaltest.zip
+cd ..
+
+python prepare_train_data.py \
+    --img_height 512 \
+    --img_width 1024 \
+    --dataset_dir CS_RAW \
+    --dataset_name cityscapes \
+    --dump_root CS \
+    --seq_length 3 \
+    --num_threads 8
+```
+
+Download cityscapes depth ground truth(provided by manydepth) for evaluation:
+```bash
+cd ..
+cd splits/cityscapes/
+wget https://storage.googleapis.com/niantic-lon-static/research/manydepth/gt_depths_cityscapes.zip
+unzip gt_depths_cityscapes.zip
+cd ../..
+```
+
+You can also place the Cityscapes dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
+
+
+## ⏳ Training
+
 
 ## ✏️ 📄 Citation
 If you find our work useful or interesting, please cite our paper:
