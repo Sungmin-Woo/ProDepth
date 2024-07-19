@@ -32,6 +32,7 @@ We ran out experiments with PyTorch 1.7.1, CUDA 11.0, Pyhton 3.9.13 and Ubuntu 1
 
 ## 💾 Data Prepare
 🔹 KITTI
+
 You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) by running:
 ```shell
 wget -i splits/kitti_archives_to_download.txt -P kitti_data/
@@ -42,13 +43,11 @@ cd kitti_data
 unzip "*.zip"
 cd ..
 ```
-Please refer to [Monodepth2](https://github.com/nianticlabs/monodepth2) for detail instructions.
 You can also place the KITTI dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
 
-**Splits**
+Please refer to [Monodepth2](https://github.com/nianticlabs/monodepth2) for detail instructions.
 
-The train/test/validation splits are defined in the `splits/` folder.
-By default, the code will train a depth model using [Zhou's subset](https://github.com/tinghuiz/SfMLearner) of the standard Eigen split of KITTI, which is designed for monocular training.
+🔹 Cityscapes
 
 ## ✏️ 📄 Citation
 If you find our work useful or interesting, please cite our paper:
