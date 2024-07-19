@@ -31,7 +31,7 @@ pip install numpy==1.23.4 matplotlib==3.5.3 opencv-python==4.7.0.72 tqdm scikit-
 We ran out experiments with PyTorch 1.7.1, CUDA 11.0, Pyhton 3.9.13 and Ubuntu 18.04.
 
 ## 💾 Data Prepare
-🔹 KITTI
+### 🔹 KITTI
 
 You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) by running:
 ```shell
@@ -79,7 +79,7 @@ You can also place the KITTI dataset wherever you like and point towards it with
 
 Please refer to [Monodepth2](https://github.com/nianticlabs/monodepth2) for detail instructions.
 
-🔹 Cityscapes
+### 🔹 Cityscapes
 
 From [Cityscapes official website](https://www.cityscapes-dataset.com/) download the following packages: 1) `leftImg8bit_sequence_trainvaltest.zip`, 2) `camera_trainvaltest.zip` into the `CS_RAW` folder.
 
@@ -113,8 +113,7 @@ data_dir/CS_RAW/
     |--val
   |--license.txt
   |--ReadMe
-```
-```
+
 data_dir/CS/
   |--aachen
   |--bochum
@@ -133,6 +132,31 @@ You can also place the Cityscapes dataset wherever you like and point towards it
 
 
 ## ⏳ Training
+
+Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`)
+
+### 🔹 Single GPU Training
+
+For instance, to train w/ 1 GPU on Cityscapes Dataset:
+
+Change $GPU_NUM and $BS in train_cs_prodepth.sh to 1 and 24
+Then run,
+```
+bash ./train_cs_prodepth.sh <model_name> <port_num>
+```
+
+### 🔹 Multi-GPU Training
+
+For instance, to train w/ 4 GPUs on Cityscapes Dataset:
+Change $GPU_NUM and $BS in train_cs_prodepth.sh to 4 and 6
+Then run,
+```
+CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name> <port_num>
+```
+Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py](options.py) for details).
+
+## 💾 Evaluation
+
 
 
 ## ✏️ 📄 Citation
