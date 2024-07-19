@@ -14,9 +14,7 @@ Codes will be released soon.
 - [Training](#training)
   - [Single-GPU](#-single-gpu-training)
   - [Multi-GPU](#-multi-gpu-training)
-- [Evaluation](#evaluation)
-  - [Depth](#-depth)
-  - [Visualization](#%EF%B8%8F-visualization)
+- [Ground Truth Data Prepare and Evaluation](#evaluation)
 - [Citation](#citation)
 
 ## ⚙️ Installation
@@ -68,14 +66,6 @@ data_dir/kitti_data/
   |-- 2011_10_03
 ```
 
-To prepare the ground truth depth maps run:
-```shell
-python export_gt_depth.py --data_path kitti_data --split eigen
-python export_gt_depth.py --data_path kitti_data --split eigen_benchmark
-```
-
-...assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
-
 You can also place the KITTI dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
 
 Please refer to [Monodepth2](https://github.com/nianticlabs/monodepth2) for detail instructions.
@@ -118,15 +108,6 @@ data_dir/CS_RAW/
 data_dir/CS/
   |--aachen
   |--bochum
-```
-
-Download cityscapes depth ground truth(provided by manydepth) for evaluation:
-```bash
-cd ..
-cd splits/cityscapes/
-wget https://storage.googleapis.com/niantic-lon-static/research/manydepth/gt_depths_cityscapes.zip
-unzip gt_depths_cityscapes.zip
-cd ../..
 ```
 
 You can also place the Cityscapes dataset wherever you like and point towards it with the `--data_path` flag during training and evaluation.
@@ -182,9 +163,33 @@ CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name>
 ```
 Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py] for details).
 
-## 📊 Evaluation
+## 📊 Ground Truth Data Prepare and Evaluation
 
-To evaluate a model on Cityscapes, run:
+🔹 KITTI
+To prepare the ground truth depth maps run:
+```shell
+python export_gt_depth.py --data_path kitti_data --split eigen
+python export_gt_depth.py --data_path kitti_data --split eigen_benchmark
+```
+
+...assuming that you have placed the KITTI dataset in the default location of `./kitti_data/`.
+
+To evaluate a model on KITTI, run:
+```
+bash ./test_kitti_prodepth.sh <model_name>
+```
+
+
+🔹 Cityscapes
+Download cityscapes depth ground truth(provided by manydepth) for evaluation:
+```bash
+cd ..
+cd splits/cityscapes/
+wget https://storage.googleapis.com/niantic-lon-static/research/manydepth/gt_depths_cityscapes.zip
+unzip gt_depths_cityscapes.zip
+cd ../..
+```
+To evaluate a model on KITTI, run:
 ```
 bash ./test_cs_prodepth.sh <model_name>
 ```
