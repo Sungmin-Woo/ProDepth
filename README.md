@@ -8,7 +8,7 @@ Codes will be released soon.
 
 If you find our work useful or interesting, please cite our paper:
 
-```<!-- BibTeX -->
+```BibTeX
 <section class="section" id="BibTeX">
   <div class="container">
     <!-- Abstract -->
