@@ -132,7 +132,7 @@ You can download weights for some pretrained models here:
 - Training can be done with a single GPU or multiple GPUs (via `torch.nn.parallel.DistributedDataParallel`).
 - By default, models and log event files are saved to ./log.
 - As our model uses the lightweight backbone of "Lite-Mono", please download the ImageNet-1K pretrained [Lite-Mono](https://surfdrive.surf.nl/files/index.php/s/oil2ME6ymoLGDlL) and place to './pretrained/'.
-- To stable the training process of multi-frame depth estimation, we recommend freezing the single-frame depth network during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI](https://drive.google.com/file/d/1bg8EG9VsO24xAbpVAWRE_OUdK1hoHAIm/view?usp=drive_link) and [Cityscapes](https://drive.google.com/file/d/1b5SZHCfbT0GH1SVSR1eBnhqcz7AWYn43/view?usp=drive_link). Please download the given checkpoints and place to './pretrained/CS or KIITI/'.
+- To stable the training process of multi-frame depth estimation, we recommend freezing the single-frame depth network during training. Here, we provide checkpoints for single-frame depth estimation for both [KITTI](https://drive.google.com/file/d/1bg8EG9VsO24xAbpVAWRE_OUdK1hoHAIm/view?usp=drive_link) and [Cityscapes](https://drive.google.com/file/d/1b5SZHCfbT0GH1SVSR1eBnhqcz7AWYn43/view?usp=drive_link). Please download the given checkpoints and place to './pretrained/CS or KITTI/'.
   
 ### 🔹 Single GPU Training
 
