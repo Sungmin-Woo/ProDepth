@@ -150,7 +150,6 @@ Change $GPU_NUM and $BS in train_cs_prodepth.sh to 4 and 6, and run:
 ```
 CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name> <port_num>
 ```
-Note: Learning rate and scheduler step size should be adjusted accordingly when training with a single GPU (See [options.py] for details).
 
 ## 📊 Ground Truth Data Preparation and Evaluation
 
@@ -172,11 +171,9 @@ bash ./test_kitti_prodepth.sh <model_name>
 🔹 Cityscapes
 Download cityscapes depth ground truth (provided by manydepth) for evaluation:
 ```bash
-cd ..
 cd splits/cityscapes/
 wget https://storage.googleapis.com/niantic-lon-static/research/manydepth/gt_depths_cityscapes.zip
 unzip gt_depths_cityscapes.zip
-cd ../..
 ```
 To evaluate a model on Cityscapes, run:
 ```
