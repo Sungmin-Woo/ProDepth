@@ -3,7 +3,6 @@
 
 Official PyTorch implementation for the ECCV 2024 paper: "ProDepth: Boosting Self-Supervised Multi-Frame Monocular Depth with Probabilistic Fusion". 
 
-Codes will be released soon.
 
 ## 👀 Table of Contents
 - [Installation](#installation)
@@ -154,6 +153,7 @@ CUDA_VISIBLE_DEVICES=<your_desired_GPU> bash ./train_cs_prodepth.sh <model_name>
 ## 📊 Ground Truth Data Preparation and Evaluation
 
 🔹 KITTI
+
 To prepare the ground truth depth maps, run:
 ```shell
 python export_gt_depth.py --data_path kitti_data --split eigen
@@ -169,6 +169,7 @@ bash ./test_kitti_prodepth.sh <model_name>
 
 
 🔹 Cityscapes
+
 Download cityscapes depth ground truth (provided by manydepth) for evaluation:
 ```bash
 cd splits/cityscapes/
@@ -179,6 +180,11 @@ To evaluate a model on Cityscapes, run:
 ```
 bash ./test_cs_prodepth.sh <model_name>
 ```
+
+## Acknowledgements
+Our work is partially based on these opening source work: [monodepth2](https://github.com/nianticlabs/monodepth2), [ManyDepth](https://github.com/nianticlabs/manydepth), [DynamicDepth](https://github.com/AutoAILab/DynamicDepth), [DynamoDepth](https://dynamo-depth.github.io/), [Lite-Mono](https://github.com/noahzn/Lite-Mono).
+
+We appreciate their contributions to the depth learning community.
 
 ## ✏️ 📄 Citation
 If you find our work useful or interesting, please cite our paper:
@@ -191,8 +197,3 @@ If you find our work useful or interesting, please cite our paper:
   year={2024}
 }
 ```
-
-## Acknowledgements
-Our work is partially based on these opening source work: [monodepth2](https://github.com/nianticlabs/monodepth2), [ManyDepth](https://github.com/nianticlabs/manydepth), [DynamicDepth](https://github.com/AutoAILab/DynamicDepth), [DynamoDepth](https://dynamo-depth.github.io/), [Lite-Mono](https://github.com/noahzn/Lite-Mono).
-
-We appreciate their contributions to the depth learning community.
