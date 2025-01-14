@@ -30,7 +30,7 @@ def export_gt_depths_kitti():
                         choices=["eigen", "eigen_benchmark"])
     opt = parser.parse_args()
 
-    split_folder = os.path.join(os.path.dirname(__file__), "splits", opt.split)
+    split_folder = os.path.join(os.path.dirname(__file__), "../splits", opt.split)
     lines = readlines(os.path.join(split_folder, "test_files.txt"))
 
     print("Exporting ground truth depths for {}".format(opt.split))
