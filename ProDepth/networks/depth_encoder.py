@@ -20,7 +20,8 @@ class LiteCVEncoder(nn.Module):
         super().__init__()
 
         self.num_ch_enc = np.array([64, 64, 128, 224])
-        self.depth = [4, 4, 10]
+        # self.depth = [4, 4, 10]
+        self.depth = [4, 2, 5]
         self.dims = [64, 128, 224]
         if height == 192 and width == 640:
             self.dilation = [[1, 2, 3], [1, 2, 3], [1, 2, 3, 1, 2, 3, 2, 4, 6]]
