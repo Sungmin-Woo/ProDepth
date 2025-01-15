@@ -125,6 +125,10 @@ You can download weights for some pretrained models here:
 |-------------------|-------------|:-----------------------------------:|----------------------------------------------------------------------------------------------|
 | ProDepth          | 512 x 192   |      0.095         | [Download 🔗](https://drive.google.com/file/d/1I7d6wj58yyaT7vOEfF3RIt8jVdkDsmZV/view?usp=drive_link)           |
 
+**Note:** If you'd like to use the pretrained weights for the **Cityscapes** dataset, you need to modify a single line in [depth_encoder.py](https://github.com/Sungmin-Woo/ProDepth/blob/efc6840b0df067c5ed5d7fad452f781fb785e78a/ProDepth/networks/depth_encoder.py) as shown below. 
+https://github.com/Sungmin-Woo/ProDepth/blob/efc6840b0df067c5ed5d7fad452f781fb785e78a/ProDepth/networks/depth_encoder.py#L23-L24
+If you prefer training from scratch, you can simply use the code in the repository as-is without any issues in achieving comparable performance.
+
 
 ## ⏳ Training
 
